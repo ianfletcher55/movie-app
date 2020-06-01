@@ -11,4 +11,10 @@ class Api::MoviesController < ApplicationController
     render 'get_movie.json.jb'
   end
 
+  def each_by_year
+    Movie.find_each do |movie|
+      Movie.year(movie).deliver_now
+    end
+  end
+
 end

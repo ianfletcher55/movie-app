@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
     get "/movie" => "movies#get_movie_action"
 
+    get "/by_year" => "movies#each_by_year"
+
   end
 end
