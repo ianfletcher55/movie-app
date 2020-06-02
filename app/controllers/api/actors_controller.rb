@@ -1,13 +1,25 @@
 class Api::ActorsController < ApplicationController
 
-  def all_actors
+  def index
     @actors = Actor.all
-    render 'all_actors.json.jb'
+    render 'index.json.jb'
   end
 
-  def first_actor
-    @actor = Actor.find_by(id: 4)
-    render 'actor.json.jb'
+  def show
+    @actors = Actor.all
+    @actor_query = params["id"]
+    @actor = @actors.find_by(id: @actor_query)
+    render 'show.json.jb'
+  end
+
+  def create
+    @actor = Actor.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      known_for: params[:known_for]
+  )
+    @actor.save
+    render 'show.json.jb'
   end
 
 end
