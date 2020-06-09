@@ -2,6 +2,9 @@ class Api::MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    if params[:only_english]
+      @movies = @movies.where("english = ?", true)
+    end
     render 'index.json.jb'
   end
 

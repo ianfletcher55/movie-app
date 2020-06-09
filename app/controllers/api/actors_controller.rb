@@ -2,6 +2,9 @@ class Api::ActorsController < ApplicationController
 
   def index
     @actors = Actor.all
+    if params[:sort]
+      @actors = @actors.all.order(age: :desc)
+    end
     render 'index.json.jb'
   end
 
