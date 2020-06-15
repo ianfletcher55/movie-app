@@ -24,5 +24,9 @@ Rails.application.routes.draw do
 
     delete "/movies/:id" => "movies#destroy"
 
+    post "/users" => "users#create"
+
+    post "/sessions" => "sessions#create"
+
   end
 end
